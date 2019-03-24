@@ -4,7 +4,7 @@ class CreatePlannedMeals < ActiveRecord::Migration[5.2]
       t.date :date
       t.string :meal_type
       t.belongs_to :recipe, foreign_key: true
-      t.belongs_to :user, foreign_key: true
+      t.belongs_to :planner, references: :users, foreign_key: { to_table: :users}
 
       t.timestamps
     end
