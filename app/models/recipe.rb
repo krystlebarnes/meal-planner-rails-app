@@ -9,4 +9,6 @@ class Recipe < ApplicationRecord
   validates :cook_time, :numericality => { only_integer: true, allow_nil: true, message: "must be a number"}
   validates :serving_size, :numericality => { only_integer: true, allow_nil: true, message: "must be a number"}
   validates :instructions, :presence => {:message => "can't be blank"}
+  scope :quick_recipes, { where("prep_time <= 30") }
+  scope :simple_recipes, { where("ingredients.count <= 5")}
 end
