@@ -7,7 +7,7 @@ class PlannedMeal < ApplicationRecord
   scope :meal_plan, ->(start_date) { where("date BETWEEN ? AND (? + 13.days)", start_date) if start_date.present? }
 
   def valid_meal_type?
-    if self.meal_type != "Breakfast" || "Morning Snack" || "Lunch" || "Afternoon Snack" || "Dinner"
+    if self.meal_type != "Breakfast" || "Morning Snack" || "Lunch" || "Afternoon Snack" || "Dinner" || "Late Night Snack"
       errors.add(:meal_type, "is invalid")
     end
   end
