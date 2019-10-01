@@ -1,9 +1,11 @@
-<%= form_for @user, url: '/login' do |f| %>
-  <%= f.label :username, "Username:" %>
-  <%= f.text_field :username %>
-  <br>
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.submit "Log in" %>
+<%= form_tag "/auth/identity/callback" do %>
+  <div class="field">
+  <%= label_tag :auth_key, "Email:" %>
+  <%= text_field_tag :auth_key %>
+  </div>
+  <div class="field">
+  <%= label_tag :password, "Password:" %>
+  <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Log in" %></div>
 <% end %>
