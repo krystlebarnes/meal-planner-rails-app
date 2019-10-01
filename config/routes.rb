@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :planned_meals
   resources :recipes
   resources :users
+  resources :identities
   get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
+  match '/auth/failure', :to => 'sessions#failure', via: [:get, :post]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
