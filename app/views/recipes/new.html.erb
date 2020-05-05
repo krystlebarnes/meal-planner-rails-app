@@ -1,0 +1,61 @@
+<h2>Add a Recipe</h2>
+
+<% if @recipe.errors.any? %>
+  <div class="error">
+  <ul>
+  <% @recipe.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  </div>
+<% end %>
+
+<%= form_for @recipe do |f| %>
+  <div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </div>
+  <div class="field">
+  <%= f.label :description %><br>
+  <%= f.text_area :description %>
+  </div>
+  <div class="field">
+  <%= f.label :prep_time %>
+  <%= f.text_field :prep_time %>
+  </div>
+  <div class="field">
+  <%= f.label :cook_time %>
+  <%= f.text_field :cook_time %>
+  </div>
+  <div class="field">
+  <%= f.label :serving_size %>
+  <%= f.text_field :serving_size %>
+  </div>
+  <div class="field">
+  <%= f.label :calories %>
+  <%= f.text_field :calories %>
+  </div>
+
+  <h4>Ingredients</h4>
+  <div data-controller="nested-form">
+    <template data-target='nested-form.template'>
+      <%= form.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
+        <%= render 'ingredient_fields', form: ingredient %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :ingredients do |ingredient| %>
+      <%= render 'ingredient_fields', form: ingredient %>
+    <% end %>
+
+    <div data-target="nested-form.add_item">
+      <%= link_to "Add ingredient", "#", data: { action: "nested-form#add_association" } %>
+    </div>
+  </div>
+
+    <div class="field">
+    <h4><%= f.label :instructions %></h4>
+    <%= f.text_area :instructions %>
+    </div>
+    <%= f.submit "Submit" %>
+<% end %>

@@ -1,0 +1,37 @@
+<div class="center">
+
+<h2>Sign Up</h2>
+
+<% if @user.errors.any? %>
+  <div class="error">
+  <p>
+  <% @user.errors.full_messages.each do |msg| %>
+    <%= msg %>.<br>
+  <% end %>
+  </p>
+  </div>
+<% end %>
+
+<%= form_for :user, url: '/users' do |f| %>
+  <div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name, :value => "#{@name}" %>
+  </div>
+  <div class="field">
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  </div>
+  <div class="field">
+  <%= f.label :email %>
+  <%= f.text_field :email, :value => "#{@email}" %>
+  </div>
+  <div class="field">
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+  <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+</div>
