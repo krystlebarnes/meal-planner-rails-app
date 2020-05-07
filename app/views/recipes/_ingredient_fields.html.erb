@@ -2,23 +2,14 @@
   <div class='form-group'>
     <%= form.hidden_field :_destroy %>
     <div class="field">
-    <%= i.label :quantity %>
-    <%= i.text_field :quantity %>
-    </div>
-    <div class="field">
-    <%= i.label :unit %>
-    <%= i.text_field :unit %>
-    </div>
-    <div class="field">
-    <%= i.label :item_name, 'Item' %>
-    <%= i.text_field :item_name %> #find or create item
-    </div>
-    <div class="field">
-    <%= i.label :notes %>
-    <%= i.text_area :notes %>
-    </div>
+    <%= form.text_field :quantity, size: '4', placeholder: 'qty' %> 
+    <%= form.text_field :unit, size: '10',  placeholder: 'unit' %> 
+    <%= form.text_field :item_name, size: '25', placeholder: 'item' %> <!-- find or create item -->
+    <%= form.text_field :notes, size: '50', placeholder: 'notes' %>
+    
     <small>
       <%= link_to "Delete", "#", data: { action: "click->nested-form#remove_association" } %>
     </small>
+    </div>
   </div>
 </div>

@@ -39,12 +39,12 @@
   <h4>Ingredients</h4>
   <div data-controller="nested-form">
     <template data-target='nested-form.template'>
-      <%= form.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
+      <%= f.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
         <%= render 'ingredient_fields', form: ingredient %>
       <% end %>
     </template>
 
-    <%= form.fields_for :ingredients do |ingredient| %>
+    <%= f.fields_for :ingredients do |ingredient| %>
       <%= render 'ingredient_fields', form: ingredient %>
     <% end %>
 

@@ -10,6 +10,26 @@
   </head>
 
   <body>
+
+  <div class="navbar">
+    <div class="nav-header">
+      <h1><%= link_to "meal planner", root_path %></h1>
+    </div>
+    <div class="nav-links">
+      <% if current_user %>
+        <%= link_to "Home", recipes_path %>
+        <%= link_to "Add Recipe", new_recipe_path %>
+        <%= link_to "Your Recipes", user_path(current_user) %>
+        <%= link_to "Meal Plans", planned_meals_path %>
+        <%= link_to "Log Out", logout_path, method: :delete %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <!-- content -->
+  <div class="container"  role="main">
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>
