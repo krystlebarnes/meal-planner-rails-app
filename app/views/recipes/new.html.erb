@@ -37,25 +37,30 @@
   </div>
 
   <h4>Ingredients</h4>
-  <div data-controller="nested-form">
-    <template data-target='nested-form.template'>
-      <%= f.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
+
+    <div data-controller="nested-form">
+      <template data-target='nested-form.template'>
+        <%= f.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
+          <%= render 'ingredient_fields', form: ingredient %>
+        <% end %>
+      </template>
+
+      <%= f.fields_for :ingredients do |ingredient| %>
         <%= render 'ingredient_fields', form: ingredient %>
       <% end %>
-    </template>
-
-    <%= f.fields_for :ingredients do |ingredient| %>
-      <%= render 'ingredient_fields', form: ingredient %>
-    <% end %>
-
-    <div data-target="nested-form.add_item">
-      <%= link_to "Add ingredient", "#", data: { action: "nested-form#add_association" } %>
+     
+      <div data-target="nested-form.add_item">
+      <small>
+      <br>
+        <%= link_to "Add ingredient", "#", data: { action: "nested-form#add_association" } %>
+      </small>
+      </div>
+      
     </div>
+
+  <div class="field">
+  <h4><%= f.label :instructions %></h4>
+  <%= f.text_area :instructions %>
   </div>
-
-    <div class="field">
-    <h4><%= f.label :instructions %></h4>
-    <%= f.text_area :instructions %>
-    </div>
-    <%= f.submit "Submit" %>
+  <%= f.submit "Submit" %>
 <% end %>
