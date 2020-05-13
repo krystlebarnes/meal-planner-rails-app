@@ -16,7 +16,7 @@ class Ingredient < ApplicationRecord
   end
 
   def item_name=(name)
-    self.item = Item.find_or_initialize_by_name(name)
+    self.item = Item.find_or_initialize_by(name: name)
   end
 
 end

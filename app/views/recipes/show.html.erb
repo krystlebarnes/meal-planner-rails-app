@@ -1,0 +1,35 @@
+<h1><%= @recipe.name %></h1>
+<div>
+    <p>Submitted by: <%= @recipe.author.username %></p>
+</div>
+<div>
+ <p><%= @recipe.description %></div></p>
+<div>
+<p>
+Prep Time: <%= @recipe.prep_time %>
+<br>
+Cook Time: <%= @recipe.cook_time %>
+<br>
+Total Time: 
+<br>
+Serving Size: <%= @recipe.serving_size %>
+<% if @recipe.calories %>
+<br>
+Calories: <%= @recipe.calories %>
+<% end %>
+</p>
+</div>
+
+<h4>Ingredients:</h4>
+<ul>
+<% @recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient.quantity %> <%= ingredient.unit %> <%= ingredient.item_name %> <%= ingredient.notes%></li>
+  <% end %>
+</ul>
+
+<h4>Instuctions:</h4>
+<div>
+<%= @recipe.instructions %>
+</div>
+
+
