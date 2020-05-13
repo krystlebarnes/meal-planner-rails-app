@@ -10,25 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_020617) do
-
-  create_table "authorizations", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_authorizations_on_user_id"
-  end
-
-  create_table "identities", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_03_23_163736) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "quantity"
@@ -82,7 +64,6 @@ ActiveRecord::Schema.define(version: 2019_09_12_020617) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "authorizations", "users"
   add_foreign_key "ingredients", "items"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "planned_meals", "recipes"
