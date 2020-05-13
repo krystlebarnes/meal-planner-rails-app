@@ -55,12 +55,29 @@
         <%= link_to "Add ingredient", "#", data: { action: "nested-form#add_association" } %>
       </small>
       </div>
-      
     </div>
 
-  <div class="field">
-  <h4><%= f.label :instructions %></h4>
-  <%= f.text_area :instructions %>
-  </div>
-  <%= f.submit "Submit" %>
+  <h4>Instructions</h4>
+
+    <div data-controller="nested-form">
+    
+      <template data-target='nested-form.template'>
+        <%= f.fields_for :instructions, Instruction.new, child_index: 'TEMPLATE_RECORD' do |instruction| %>
+          <%= render 'instruction_fields', form: instruction %></li>
+        <% end %>
+      </template>
+
+      <%= f.fields_for :instructions do |instruction| %>
+        <%= render 'instruction_fields', form: instruction %>
+      <% end %>
+     
+      <div data-target="nested-form.add_item">
+      <small>
+      <br>
+        <%= link_to "Add step", "#", data: { action: "nested-form#add_association" } %>
+      </small>
+      </div>
+    </div>
+
+  <p><%= f.submit "Submit" %></p>
 <% end %>

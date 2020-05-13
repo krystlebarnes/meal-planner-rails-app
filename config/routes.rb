@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :instructions
   root 'application#home'
   resources :ingredients
   resources :items

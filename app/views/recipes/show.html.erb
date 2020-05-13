@@ -28,8 +28,10 @@ Calories: <%= @recipe.calories %>
 </ul>
 
 <h4>Instuctions:</h4>
-<div>
-<%= @recipe.instructions %>
-</div>
+<ol>
+<% @recipe.instructions.each do |instruction| %>
+    <li><%= instruction.step %></li>
+  <% end %>
+</ol>
 
 

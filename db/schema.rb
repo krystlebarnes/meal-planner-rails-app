@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_163736) do
+ActiveRecord::Schema.define(version: 2020_05_13_061536) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "quantity"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2019_03_23_163736) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_ingredients_on_item_id"
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+  end
+
+  create_table "instructions", force: :cascade do |t|
+    t.string "step"
+    t.integer "recipe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_instructions_on_recipe_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -48,7 +56,6 @@ ActiveRecord::Schema.define(version: 2019_03_23_163736) do
     t.integer "cook_time"
     t.integer "serving_size"
     t.integer "calories"
-    t.text "instructions"
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_163736) do
 
   add_foreign_key "ingredients", "items"
   add_foreign_key "ingredients", "recipes"
+  add_foreign_key "instructions", "recipes"
   add_foreign_key "planned_meals", "recipes"
   add_foreign_key "planned_meals", "users", column: "planner_id"
   add_foreign_key "recipes", "users", column: "author_id"
