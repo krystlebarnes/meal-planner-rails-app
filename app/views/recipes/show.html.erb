@@ -33,5 +33,8 @@ Calories: <%= @recipe.calories %>
     <li><%= instruction.step %></li>
   <% end %>
 </ol>
-
+<br>
+<div>
+<h2><i><%= link_to "edit recipe", edit_recipe_path(@recipe) if @recipe.author == current_user  %></i></h2>
+</div>
 
