@@ -1,0 +1,4 @@
+<h1><%= @user.username %></h1>
+<h3><%= @user.name %></h3>
+<p><%= link_to "Recipes", user_recipes_path(@user) %>
+<br><%= link_to "Planned Meals", user_planned_meals_path(@user) %></p>

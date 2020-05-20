@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
   skip_before_action :require_login, only: [:index]
 
   def index
-    @recipes = Recipe.all
+    if @author = User.find_by_id(params[:user_id])
+      @recipes = @author.recipes
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def new
