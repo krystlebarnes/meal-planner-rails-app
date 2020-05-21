@@ -1,0 +1,5 @@
+<ul>
+<% @planned_meals.each do |planned_meal| %>planned_meal
+    <li><b><%= link_to planned_meal.name, planned_meal_path(planned_meal) %></b> <i>by <%= planned_meal.author.username %></i></li>
+<% end %>
+</ul>

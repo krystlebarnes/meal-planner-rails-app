@@ -1,4 +1,7 @@
+<div class="recipe-header">
 <h1><%= @recipe.name %></h1>
+<span><%= link_to "+ add to meal plan", new_recipe_planned_meal_path(@recipe) %></span>
+</div>
 <div>
     <p><i>Submitted by: <%= @recipe.author.username %></i></p>
 </div>

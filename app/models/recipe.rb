@@ -20,3 +20,7 @@ end
 def total_time
   self.total_time = self.prep_time + self.cook_time
 end
+
+def self.alpha
+  order(:name)
+end

@@ -1,10 +1,21 @@
+<% if @planned_meal.errors.any? %>
+  <div class="error">
+  <ul>
+  <% @planned_meal.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  </div>
+<% end %>
+
+
 <%= form_for @planned_meal do |f| %>
   <% if params[:recipe_id] %>
     <%= f.hidden_field :recipe_id %>
   <% else %>
     <div>
       <%= f.label :recipe_id, "Select a Recipe" %>
-      <%= f.collection_select :recipe_id, Recipe.alpha, :id, :name, include_blank: true %>
+      <%= f.collection_select :recipe_id, Recipe.all, :id, :name, include_blank: true %>
     </div>
     <br>
   <% end %>

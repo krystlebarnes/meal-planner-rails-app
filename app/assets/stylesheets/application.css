@@ -135,3 +135,11 @@
   ol {
     padding-left: 20px;
   }
+
+  .recipe-header h1 {
+    display: inline;
+  }
+
+  .recipe-header span {
+    margin-left: 20px;
+  }
