@@ -1,5 +1,13 @@
 class PlannedMealsController < ApplicationController
 
+  def index
+    if @planner = User.find_by_id(params[:user_id])
+      @planned_meals = @planner.planned_meals
+    else
+      @planned_meals = PlannedMeal.all
+    end
+  end
+  
   def new
     if @recipe = Recipe.find_by_id(params[:recipe_id])
       @planned_meal = @recipe.planned_meals.build
@@ -16,9 +24,6 @@ class PlannedMealsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def index
   end
 
   private
