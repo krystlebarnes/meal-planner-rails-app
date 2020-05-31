@@ -1,3 +1,9 @@
+<h2>My Meal Plan</h2>
+
+<p>
+<%= link_to "+ add a recipe to my meal plan", new_planned_meal_path %>
+</p>
+<br>
 <ul>
 <% @planned_meals.each do |planned_meal| %>
     <li><b><%= link_to "#{planned_meal.date.strftime("%A, %B %e")} - #{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) %></b></li>
