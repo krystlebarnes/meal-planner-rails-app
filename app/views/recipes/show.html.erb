@@ -1,5 +1,6 @@
 <div class="recipe-header">
-<h1><%= @recipe.name %></h1>
+<h2><%= @recipe.name %></h2>
+<span><%= link_to "+ edit recipe", edit_recipe_path(@recipe) if @recipe.author == current_user %></span>
 <span><%= link_to "+ add to meal plan", new_recipe_planned_meal_path(@recipe) %></span>
 </div>
 <div>
@@ -36,8 +37,4 @@ Calories: <%= @recipe.calories %>
     <li><%= instruction.step %></li>
   <% end %>
 </ol>
-<br>
-<div>
-<h2><i><%= link_to "edit recipe", edit_recipe_path(@recipe) if @recipe.author == current_user  %></i></h2>
-</div>
 

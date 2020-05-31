@@ -136,10 +136,14 @@
     padding-left: 20px;
   }
 
-  .recipe-header h1 {
+  .recipe-header h2 {
     display: inline;
   }
 
   .recipe-header span {
     margin-left: 20px;
+  }
+
+  .profile-header h2 {
+    margin-bottom: 10px;
   }
