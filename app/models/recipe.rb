@@ -15,12 +15,13 @@ class Recipe < ApplicationRecord
   scope :simple_recipes, -> { where("ingredients.count <= 5")}
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: proc { |attr| attr['item_name'].blank? }
   accepts_nested_attributes_for :instructions, allow_destroy: true, reject_if: proc { |attr| attr['step'].blank? }
+
+def self.alpha
+  order(:name)
 end
 
 def total_time
   self.total_time = self.prep_time + self.cook_time
 end
 
-def self.alpha
-  order(:name)
 end
