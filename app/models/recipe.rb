@@ -21,7 +21,7 @@ def self.alpha
 end
 
 def total_time
-  self.total_time = self.prep_time + self.cook_time
+  self.prep_time.to_i + self.cook_time.to_i
 end
 
 end
