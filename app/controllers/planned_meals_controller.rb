@@ -13,6 +13,7 @@ class PlannedMealsController < ApplicationController
       @planned_meal = @recipe.planned_meals.build
     else
       @planned_meal = PlannedMeal.new
+      @recipes = Recipe.alpha
     end
   end
 

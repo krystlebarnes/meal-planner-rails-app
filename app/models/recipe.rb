@@ -11,14 +11,11 @@ class Recipe < ApplicationRecord
   validates :serving_size, :numericality => { only_integer: true, allow_nil: true, message: "must be a number"}
   validates :calories, :numericality => { only_integer: true, allow_nil: true, message: "must be a number"}
   validates :instructions, :presence => {:message => "can't be blank"}
+  scope :alpha, -> { order(:name) }
   scope :quick_recipes, -> { where("prep_time <= 30") }
   scope :simple_recipes, -> { where("ingredients.count <= 5")}
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: proc { |attr| attr['item_name'].blank? }
   accepts_nested_attributes_for :instructions, allow_destroy: true, reject_if: proc { |attr| attr['step'].blank? }
-
-def self.alpha
-  order(:name)
-end
 
 def total_time
   self.prep_time.to_i + self.cook_time.to_i
