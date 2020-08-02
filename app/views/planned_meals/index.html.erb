@@ -3,9 +3,141 @@
 <p>
 <%= link_to "+ add a recipe to my meal plan", new_planned_meal_path %>
 </p>
-<br>
-<ul>
-<% @planned_meals.each do |planned_meal| %>
-    <li><b><%= link_to "#{planned_meal.date.strftime("%A, %B %e")} - #{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) %></b></li>
+<%= form_tag("/planned_meals", method: 'get') do %>
+  <%= hidden_field_tag(:user_id, @planner.id) if params[:user_id] %>
+  <%= label_tag(:start_date, "When would you like to start your 2-week meal plan?") %>
+  <%= date_field_tag(:start_date) %>
+  <%= submit_tag("Show me my meal plan") %>
 <% end %>
-</ul>
+<div class="meal-planner">
+<table>
+  <tr>
+    <th colspan="7"><h2><%= @start_date.strftime("%B") %></h2></th>
+  </tr>
+  <tr>
+    <th><%= @start_date.strftime("%A") %></th>
+    <th><%= @day_2.strftime("%A") %></th>
+    <th><%= @day_3.strftime("%A") %></th>
+    <th><%= @day_4.strftime("%A") %></th>
+    <th><%= @day_5.strftime("%A") %></th>
+    <th><%= @day_6.strftime("%A") %></th>
+    <th><%= @day_7.strftime("%A") %></th>
+  </tr>
+  <tr>
+    <td>
+    <%= @start_date.day %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @start_date %></li>
+    <% end %>
+    </ul>
+    </td>
+    <td>
+    <%= @start_date.month == @day_2.month ? (@day_2.day) : (@day_2.strftime("%b %-d")) %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_2 %></li>
+    <% end %>
+    </ul>
+    </td>
+    <td>
+    <%= @day_2.month == @day_3.month ? (@day_3.day) : (@day_3.strftime("%b %-d") ) %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_3 %></li>
+    <% end %>
+    </ul>
+    </td>
+    <td>
+    <%= @day_3.month == @day_4.month ? (@day_4.day) : (@day_4.strftime("%b %-d") ) %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_4 %></li>
+    <% end %>
+    </ul>
+    </td>
+    <td>
+    <%= @day_4.month == @day_5.month ? (@day_5.day) : (@day_5.strftime("%b %-d") ) %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_5 %></li>
+    <% end %>
+    </ul>
+    </td>
+    <td>
+    <%= @day_5.month == @day_6.month ? (@day_6.day) : (@day_6.strftime("%b %-d") ) %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_6 %></li>
+    <% end %>
+    </ul>
+    </td>
+    <td>
+    <%= @day_6.month == @day_7.month ? (@day_7.day) : (@day_7.strftime("%b %-d") ) %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_7 %></li>
+    <% end %>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+  <td>
+  <%= @day_7.month == @day_8.month ? (@day_8.day) : (@day_8.strftime("%b %-d") ) %>
+    <ul>
+    <% @planned_meals.each do |planned_meal| %>
+        <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_88 %></li>
+    <% end %>
+    </ul>
+  </td>
+  <td>
+  <%= @day_8.month == @day_9.month ? (@day_9.day) : (@day_9.strftime("%b %-d")) %>
+  <ul>
+  <% @planned_meals.each do |planned_meal| %>
+      <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_9 %></li>
+  <% end %>
+  </ul>
+  </td>
+  <td>
+  <%= @day_9.month == @day_10.month ? (@day_10.day) : (@day_10.strftime("%b %-d") ) %>
+  <ul>
+  <% @planned_meals.each do |planned_meal| %>
+      <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_10 %></li>
+  <% end %>
+  </ul>
+  </td>
+  <td>
+  <%= @day_10.month == @day_11.month ? (@day_11.day) : (@day_11.strftime("%b %-d") ) %>
+  <ul>
+  <% @planned_meals.each do |planned_meal| %>
+      <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_11 %></li>
+  <% end %>
+  </ul>
+  </td>
+  <td>
+  <%= @day_11.month == @day_12.month ? (@day_12.day) : (@day_12.strftime("%b %-d") ) %>
+  <ul>
+  <% @planned_meals.each do |planned_meal| %>
+      <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_12 %></li>
+  <% end %>
+  </ul>
+  </td>
+  <td>
+  <%= @day_12.month == @day_13.month ? (@day_13.day) : (@day_13.strftime("%b %-d") ) %>
+  <ul>
+  <% @planned_meals.each do |planned_meal| %>
+      <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @day_13 %></li>
+  <% end %>
+  </ul>
+  </td>
+  <td>
+  <%= @day_13.month == @end_date.month ? (@end_date.day) : (@end_date.strftime("%b %-d") ) %>
+  <ul>
+  <% @planned_meals.each do |planned_meal| %>
+      <li><%= link_to "#{planned_meal.meal_type}: #{planned_meal.recipe.name}", recipe_path(planned_meal.recipe) if planned_meal.date == @end_date %></li>
+  <% end %>
+  </ul>
+  </td>
+</tr>
+</table>
+</div>

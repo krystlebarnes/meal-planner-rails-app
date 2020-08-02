@@ -147,3 +147,37 @@
   .profile-header h2 {
     margin-bottom: 10px;
   }
+
+  .meal-planner {
+    margin-top: 50px;
+  }
+
+  .meal-planner h2 {
+    font-size: 1.39em;
+  }
+
+  .meal-planner table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .meal-planner th {
+    text-align: center;
+    border: 1px solid #dddddd;
+    padding: 5px;
+    width: 14.2857%;
+  }
+
+  .meal-planner td {
+    vertical-align: top;
+    text-align: left;
+    border: 1px solid #dddddd;
+    padding: 5px;
+    width: 14.2857%;
+    height: 150px;
+  }
+
+  .meal-planner a {
+    font-size: .8em;
+  }
