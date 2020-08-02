@@ -12,26 +12,10 @@
   </div>
 <% end %>
 
-<%= form_for :user, url: '/users' do |f| %>
-  <div class="field">
-  <%= f.label :name %>
-  <%= f.text_field :name, :value => "#{@name}" %>
-  </div>
-  <div class="field">
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  </div>
-  <div class="field">
-  <%= f.label :email %>
-  <%= f.text_field :email, :value => "#{@email}" %>
-  </div>
-  <div class="field">
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-  <%= f.submit "Sign up" %>
-  </div>
+<% if @auth %>
+<%= render partial: 'oauth'%>
+<% else %>
+<%= render partial: 'form'%>
 <% end %>
 
 </div>

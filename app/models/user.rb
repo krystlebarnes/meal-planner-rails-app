@@ -11,11 +11,11 @@ class User < ApplicationRecord
   validates :email, :format => { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/, :message => "must be an email" }
   validates :password, :length => { minimum: 8, :message => "must be at least 8 characters"}
 
-  # def add_provider(auth)
-  #   # Check if the provider already exists, so we don't add it twice
-  #   unless Authorization.find_by(provider: auth["provider"], uid: auth["uid"])
-  #     Authorization.create :user => self, :provider => auth["provider"], :uid => auth["uid"]
-  #   end
-  # end
+  def self.create_by_google_omniauth(auth)
+    self.find_or_create_by(email: auth['info']['email']) do |u|
+      u.name = auth['info']['name']
+      u.password = SecureRandom.hex
+    end
+  end
 
 end

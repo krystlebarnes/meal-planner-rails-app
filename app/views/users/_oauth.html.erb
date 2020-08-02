@@ -1,0 +1,9 @@
+<%= form_for :user, url: '/users' do |f| %>
+  <%= f.hidden_field :name, :value => "#{@name}" %>
+  <%= f.hidden_field :email, :value => "#{@email}" %>
+  <%= f.hidden_field :password, :value => "#{@password}" %>
+  <%= f.label :username, "Choose a username to finish setting up your account:" %>
+  <%= f.text_field :username %>
+  <br>
+  <%= f.submit "Submit" %>
+<% end %>
