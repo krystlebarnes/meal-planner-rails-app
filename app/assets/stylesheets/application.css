@@ -181,3 +181,9 @@
   .meal-planner a {
     font-size: .8em;
   }
+
+  .notes {
+    font-size: .8em;
+    font-style: italic;
+    padding-left: 5px;
+  }

@@ -27,7 +27,7 @@ Calories: <%= @recipe.calories %>
 <h4>Ingredients:</h4>
 <ul>
 <% @recipe.ingredients.each do |ingredient| %>
-    <li><%= ingredient.quantity %> <%= ingredient.unit %> <%= ingredient.item_name %> <%= ingredient.notes%></li>
+    <li><%= ingredient.quantity %> <%= ingredient.unit %> <%= ingredient.item_name %> <span class="notes"><%= ingredient.notes%></span></li>
   <% end %>
 </ul>
 
