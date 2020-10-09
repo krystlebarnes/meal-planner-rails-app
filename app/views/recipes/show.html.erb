@@ -10,13 +10,21 @@
  <p><%= @recipe.description %></div></p>
 <div>
 <p>
-Prep Time: <%= @recipe.prep_time %>
+<% if @recipe.prep_time %>
+Prep Time: <%= @recipe.prep_time %> minutes
 <br>
-Cook Time: <%= @recipe.cook_time %>
+<% end %>
+<% if @recipe.cook_time %>
+Cook Time: <%= @recipe.cook_time %> minutes
 <br>
-Total Time: <%= @recipe.total_time %>
+<% end %>
+<% if @recipe.prep_time || @recipe.cook_time %>
+Total Time: <%= @recipe.total_time %> minutes
 <br>
+<% end %>
+<% if @recipe.serving_size %>
 Serving Size: <%= @recipe.serving_size %>
+<% end %>
 <% if @recipe.calories %>
 <br>
 Calories: <%= @recipe.calories %>
