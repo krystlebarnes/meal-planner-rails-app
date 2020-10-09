@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def home
     if logged_in?
-      redirect_to user_path(@current_user)
+      redirect_to recipes_path
     end
   end
 
