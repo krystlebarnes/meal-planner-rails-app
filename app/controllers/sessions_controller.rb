@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     if params[:provider] == 'google_oauth2' && @user = User.find_by(email: auth['info']['email']) #checks to see if logging in using oauth and has logged in before
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to recipes_path
 
     elsif params[:provider] == 'google_oauth2'
       session[:omniauth] = auth.except('extra')
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        redirect_to recipes_path
       else
         flash[:error] = "Login failed. Please try again."
         redirect_to login_path
