@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to recipes_path
       session.delete :omniauth  if session[:omniauth]
     else
       render :new
